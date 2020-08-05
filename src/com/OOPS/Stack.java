@@ -29,10 +29,10 @@ public class Stack {
     {
         return top==0;
     }
-    public int pop() throws Exception
+    public int pop()
     {
    if(isEmpty()) {
-       throw new Exception("Abey khali hai");
+       return -1;
    }
     //return --top;// for deleting element
         size--;
@@ -43,6 +43,7 @@ public class Stack {
 
         return ar[top-1];
     }
+
     public void display()
     {
         for (int i = 0; i <size ; i++) {

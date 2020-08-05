@@ -2,7 +2,7 @@ package com.OOPS;
 
 public class CircularQueue {
     protected int[] ar;
-    private int DEFAULT_SIZE=10;
+    private int DEFAULT_SIZE=5;
     protected int rear=0;
     protected int front =0;
     public int size=0;

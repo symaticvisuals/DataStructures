@@ -8,7 +8,7 @@ public class DStackClient {
 
         }
         for (int i = 0; i <100 ; i++) {
-            System.out.println(stack.pop());
+            //System.out.println(stack.pop());
         }
 
     }

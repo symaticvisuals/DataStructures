@@ -9,9 +9,9 @@ public class StackClient {
 
        try {
 
-          System.out.println(stack.pop());
-          System.out.println(stack.pop());
-          System.out.println(stack.pop());
+//          System.out.println(stack.pop());
+//          System.out.println(stack.pop());
+//          System.out.println(stack.pop());
         }
         catch (Exception e)         //handles exception
         {
