@@ -2,20 +2,21 @@ package com.Graphs;
 
 public class GraphClient {
     public static void main(String[] args) {
-        AdjacencyList list = new AdjacencyList();
-        list.addVertex("A");
-        list.addVertex("B");
-        list.addVertex("C");
-        list.addVertex("D");
-        //list.addVertex("E");
-        list.addEdge("A","B");
-        list.addEdge("B","D");
-        list.addEdge("A","C");
-        list.addEdge("C","D");
-        //list.DFT();
-        //list.display();
-        //list.BFT();
-        System.out.println(list.isconnected());
+        AdjacencyList graph = new AdjacencyList();
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        //graph.addVertex("E");
+        graph.addEdge("A","B");
+        graph.addEdge("B","D");
+        graph.addEdge("A","C");
+        graph.addEdge("C","D");
+        //graph.DFT();
+        //graph.display();
+        //graph.BFT();
+        System.out.println(graph.bipartite());
+        System.out.println(graph.isconnected());
 
 
 
