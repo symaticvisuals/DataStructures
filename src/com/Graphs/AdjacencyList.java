@@ -3,6 +3,8 @@ package com.Graphs;
 import java.util.*;
 
 public class AdjacencyList {
+
+    //TODO Important Graphs & Traversals
     LinkedList<Vertex> vertices = new LinkedList<>(); //vertex list
     public void addVertex(String value)
     {
