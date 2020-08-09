@@ -1,5 +1,7 @@
 package com.Graphs;
 
+import com.Heaps.Heaps;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -57,7 +59,7 @@ public class AdjacencyMapGraph<T> {
             System.out.println();
         }
     }
-
+    //KRUSKAL ALGO
     public boolean union(Vertex first, Vertex second)
     {
     Vertex f = Find(first);
@@ -115,7 +117,83 @@ public class AdjacencyMapGraph<T> {
         }
         return finalmap;
     }
+        // PRIMS ALGO
+    class PrimsPair implements Comparable<PrimsPair>
+    {
+        //TODO PRIMES ALGO
+        T Vertexname;
+        T acqVertexname;
 
+        int cost;
+
+        @Override
+        public int compareTo(PrimsPair o) {
+            return this.cost- o.cost;
+        }
+    }
+
+    public AdjacencyMapGraph<T> prims()
+    {
+        AdjacencyMapGraph<T> graph = new AdjacencyMapGraph<>();
+        Heaps<PrimsPair> heap = new Heaps<>();
+        HashMap<T, PrimsPair>map = new HashMap<>();
+
+        // Inserting all pairs in Heap and Maps
+
+        for (T key :vertexMap.keySet()) {
+            PrimsPair np = new PrimsPair();
+            np.Vertexname = key;
+            np.acqVertexname= null;
+            np.cost= Integer.MAX_VALUE;
+
+            heap.insert(np);
+            map.put(key,np);
+        }
+
+        // for creating our graph
+
+        while(!heap.isEmpty())
+        {
+            PrimsPair rp = heap.removeforprimes();
+            map.remove(rp.Vertexname);
+
+            //adding vertex and edges acc to the scenario
+
+            if(rp.acqVertexname==null)
+            {
+                graph.addVertex(rp.Vertexname);
+            }
+            else
+            {
+                graph.addVertex(rp.Vertexname);
+                graph.addEdge(rp.Vertexname,rp.acqVertexname,rp.cost);
+            }
+
+            //padosiyo ka kaam
+            for (Vertex padosi:vertexMap.get(rp.Vertexname).neighbours.keySet()) {
+
+              if(map.containsKey(padosi.value))
+              {
+                  int oldcost = map.get(padosi.value).cost;
+
+                  int newcost = vertexMap.get(rp.Vertexname).neighbours.get(padosi);
+
+                  if(newcost< oldcost)
+                  {
+
+                        //jis bi padosi ki baat krre hai uski cost get kri
+                      PrimsPair gp = map.get(padosi.value);
+                      gp.acqVertexname = rp.Vertexname;
+                      //update kri
+                      gp.cost = newcost;
+                        heap.update(gp);
+                  }
+              }
+
+            }
+        }
+        return graph;
+    }
     class Edge implements Comparable<Edge>{
         Vertex first;
         Vertex second;

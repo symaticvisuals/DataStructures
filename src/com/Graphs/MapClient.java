@@ -16,7 +16,9 @@ public class MapClient {
 
 
         AdjacencyMapGraph<String> map = graph.Kruskal();
-        map.display();
+        System.out.println();
+        AdjacencyMapGraph<String > map2 = graph.prims();
+        map2.display();
     }
 
 }
