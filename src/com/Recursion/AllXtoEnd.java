@@ -23,15 +23,15 @@ public class AllXtoEnd {
            return processed;
        }
         char ch = unprocessed.charAt(0);
-       unprocessed=unprocessed.substring(1);
+       unprocessed = unprocessed.substring(1);
         if(ch=='x')
        {
         count++;
-        return allXtoend(processed,unprocessed);
+        return allXtoend(processed , unprocessed);
        }
         else
         {
-            return allXtoend(processed+ch,unprocessed);
+            return allXtoend(processed +ch, unprocessed);
         }
     }
 }
