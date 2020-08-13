@@ -2,10 +2,11 @@ package com.DP;
 
 public class PallindromeSequence {
     public static void main(String[] args) {
-        String str= "aba";
-        int [][] mem = new int[str.length()+1][str.length()+1];
+        String str= "abcdaasas";
+        int [][] mem = new int[str.length()][str.length()];
         System.out.println(pallinseq(str,0,str.length()-1));
         System.out.println(pallinREC(str,0,str.length()-1,mem));
+        System.out.println(pallinIterative(str,mem));
     }
     public static int pallinseq(String str, int start, int end)
     {
@@ -29,9 +30,29 @@ public class PallindromeSequence {
     }
 
     //TODO HARD ITERATIVE HAVE A LOOK
-    public static int pallinIterative(String str, int start, int end, int[][] mem)
+    public static int pallinIterative(String str,  int[][] mem)
     {
-    return 0;
+        for (int slide = 0; slide <str.length() ; slide++) {
+
+            for (int si = 0; si <=str.length() - slide -1 ; si++) {
+
+
+                int ei = si + slide;
+
+                if (si == ei) {
+                    mem[si][ei]= 1;
+                }
+
+                else {
+                    if (str.charAt(si) == str.charAt(ei)) {
+                        mem[si][ei] = 2 + mem[si + 1][ei - 1];
+                    } else {
+                        mem[si][ei] = Math.max(mem[si + 1][ei], mem[si][ei - 1]);
+                    }
+                }
+            }
+        }
+        return mem[0][mem.length-1];
     }
 
     //TOP DOWN
